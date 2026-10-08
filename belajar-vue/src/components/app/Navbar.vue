@@ -4,21 +4,22 @@ import { useRoute } from 'vue-router'
 const isScrolled = ref(false)
 const route = useRoute()
 const menus = [
- { name: 'Home', path: '/' },
- { name: 'About', path: '/about' },
- {
- name: 'Browse',
- path: '/browse',
- children: [
- {
- name: 'Event List',
- path: '/browse/events',
- children: [{ name: 'Event Detail (Sample)', path: '/browse/events/1' }],
- },
- { name: 'Category', path: '/browse/category' },
- ],
- },
- { name: 'Contact', path: '/contact' },
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+  {
+    name: 'Browse',
+    path: '/browse',
+    children: [
+      {
+        name: 'Event List',
+        path: '/browse/events',
+        children: [{ name: 'Event Detail (Sample)', path: '/browse/events/1' }],
+      },
+      { name: 'Category', path: '/browse/category' },
+    ],
+  },
+  { name: 'Contact', path: '/contact' },
+  { name: 'Organizer Dashboard', path: '/dashboard' },
 ]
 const handleScroll = () => {
  isScrolled.value = window.scrollY > 10
