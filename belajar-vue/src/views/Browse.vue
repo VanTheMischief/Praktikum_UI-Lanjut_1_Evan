@@ -1,9 +1,17 @@
 <template>
+<<<<<<< HEAD
   <div class="browse-page"> 
+=======
+  <div class="browse-page">
+>>>>>>> fe8196a (first commit)
     <div class="browse-header">
       <h1>Browse & Discover</h1>
       <p>Find the events and categories that matter most to you.</p>
     </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> fe8196a (first commit)
     <div class="browse-content">
       <router-view></router-view>
     </div>
