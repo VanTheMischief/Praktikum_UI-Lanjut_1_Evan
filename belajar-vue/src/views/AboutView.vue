@@ -1,20 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
-</template>
-
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>
-=======
   <div class="about-page">
     <div class="about-header">
       <h1>About Gatherly</h1>
@@ -114,4 +98,3 @@
   }
 }
 </style>
->>>>>>> fe8196a (first commit)

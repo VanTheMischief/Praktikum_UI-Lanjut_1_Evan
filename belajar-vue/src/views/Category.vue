@@ -1,20 +1,13 @@
 <template>
   <div class="category-page">
     <h2 class="section-title">Explore by Category</h2>
-<<<<<<< HEAD
-=======
 
->>>>>>> fe8196a (first commit)
     <div class="category-grid">
       <div
         class="category-card"
         v-for="(cat, index) in categories"
-<<<<<<< HEAD
-        :key="index">
-=======
         :key="index"
       >
->>>>>>> fe8196a (first commit)
         <div class="cat-icon">{{ cat.icon }}</div>
         <h3>{{ cat.name }}</h3>
         <p>{{ cat.count }} Events</p>
@@ -29,15 +22,9 @@ const categories = [
   { name: 'Technology', icon: '??', count: 18 },
   { name: 'Art & Design', icon: '??', count: 12 },
   { name: 'Business', icon: '??', count: 30 },
-<<<<<<< HEAD
-  { name: 'Health & Wellness', icon: '??', count: 15 },
-  { name: 'Food & Drink', icon: '??', count: 22 }
-];
-=======
   { name: 'Health & Wellness', icon: '?????', count: 15 },
   { name: 'Food & Drink', icon: '??', count: 22 }
 ]
->>>>>>> fe8196a (first commit)
 </script>
 
 <style scoped>

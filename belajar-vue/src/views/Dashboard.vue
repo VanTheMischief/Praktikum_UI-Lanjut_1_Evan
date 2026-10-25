@@ -1,99 +1,14 @@
+<script setup>
+import { useEvents } from '@/composables/useEvents'
+const { events, totalEvents, activeEvents, completedEvents } = useEvents()
+const metrics = [{ label: 'Total Events', value: totalEvents, note: 'All events in your workspace', icon: '?', tone: 'violet' }, { label: 'Active Events', value: activeEvents, note: 'Visible in the public catalog', icon: '?', tone: 'green' }, { label: 'Completed Events', value: completedEvents, note: 'Finished and archived', icon: '?', tone: 'orange' }]
+function formatDate(value) { if (!value) return 'Date not set'; const date = new Date(value); return Number.isNaN(date.getTime()) ? value : new Intl.DateTimeFormat('en', { dateStyle: 'medium', timeStyle: 'short' }).format(date) }
+</script>
 <template>
-  <div class="dashboard-overview">
-    <h2>Welcome back, Organizer</h2>
-
-    <!-- GROUPING & PROXIMITY:
-         Data metrik dikelompokkan ke dalam kartu agar mudah dibaca sekilas. -->
-    <div class="metrics-grid">
-      <div class="metric-card">
-        <h3>Total Tickets Sold</h3>
-        <p class="metric-value">1,245</p>
-      </div>
-      <div class="metric-card">
-        <h3>Page Views</h3>
-        <p class="metric-value">8,302</p>
-      </div>
-      <div class="metric-card">
-        <h3>Revenue</h3>
-        <p class="metric-value">$12,450</p>
-      </div>
-    </div>
-
-    <!-- DATA DENSITY & F-PATTERN:
-         Penggunaan tabel untuk memaksimalkan kerapatan informasi agar mata
-         dapat melakukan scanning baris demi baris (F-Pattern) -->
-    <div class="data-table-container">
-      <h3>Recent Registrations</h3>
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>Attendee Name</th>
-            <th>Event</th>
-            <th>Registration Date</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="i in 5" :key="i">
-            <td>John Doe {{ i }}</td>
-            <td>Community Gathering {{ i }}</td>
-            <td>Oct 1{{ i }}, 2026</td>
-            <td><span class="status-badge">Confirmed</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
+<div class="dashboard-page"><div class="page-heading"><div><span class="eyebrow">OVERVIEW</span><h2>Your events at a glance</h2><p>Monitor your event activity and keep your public listings up to date.</p></div><RouterLink to="/dashboard/events" class="primary-link">Manage events <span>?</span></RouterLink></div>
+<section class="metric-grid" aria-label="Event metrics"><article v-for="metric in metrics" :key="metric.label" class="metric-card"><div class="metric-top"><span>{{ metric.label }}</span><span class="metric-icon" :class="metric.tone">{{ metric.icon }}</span></div><strong class="metric-value">{{ metric.value.value }}</strong><p>{{ metric.note }}</p></article></section>
+<section class="table-card"><div class="section-heading"><div><h3>Recent Events Status Overview</h3><p>Your latest created and updated events</p></div><RouterLink to="/dashboard/events" class="subtle-link">View all ?</RouterLink></div><div class="table-scroll"><table><thead><tr><th>Event</th><th>Category</th><th>Date</th><th>Status</th></tr></thead><tbody><tr v-for="event in events.slice(0, 6)" :key="event.id"><td><strong>{{ event.title }}</strong><span class="table-location">{{ event.location }}</span></td><td>{{ event.category }}</td><td>{{ formatDate(event.date) }}</td><td><span class="status-pill" :class="event.done ? 'completed' : 'active'">{{ event.done ? 'Completed' : 'Active' }}</span></td></tr><tr v-if="events.length === 0"><td colspan="4"><div class="table-empty"><span class="empty-icon">?</span><strong>No events to show yet</strong><span>Create your first event to see it here.</span><RouterLink to="/dashboard/events" class="subtle-link">Create an event ?</RouterLink></div></td></tr></tbody></table></div></section></div>
 </template>
-
 <style scoped>
-.dashboard-overview h2 { margin-bottom: var(--space-6); color: var(--text-main); }
-
-/* GRID untuk menyusun metrik secara proporsional */
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--space-6);
-  margin-bottom: var(--space-8);
-}
-
-.metric-card {
-  background: white;
-  padding: var(--space-6);
-  border-radius: var(--space-3);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-}
-
-.metric-card h3 { font-size: 1rem; color: var(--text-muted); margin-bottom: var(--space-2); }
-.metric-value { font-size: 2.2rem; font-weight: 700; color: var(--primary); margin: 0; }
-
-/* TABLE STYLES - Mengutamakan kerapian baris untuk Data Density */
-.data-table-container {
-  background: white;
-  padding: var(--space-6);
-  border-radius: var(--space-3);
-  border: 1px solid var(--border-color);
-}
-
-.data-table-container h3 { margin-bottom: var(--space-4); font-size: 1.2rem; color: var(--text-main); }
-
-.data-table { width: 100%; border-collapse: collapse; }
-.data-table th, .data-table td {
-  padding: var(--space-3) var(--space-4);
-  text-align: left;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.data-table th { background: var(--bg-gray); color: var(--text-muted); font-weight: 600; font-size: 0.9rem; }
-.data-table td { color: var(--text-main); font-size: 0.95rem; }
-
-.status-badge {
-  background: rgba(46, 204, 113, 0.1);
-  color: #2ecc71;
-  padding: var(--space-1) var(--space-2);
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: 600;
-}
+.dashboard-page{--ink:#211d47;--muted:#818094;--line:#ececf3;color:var(--ink)}.page-heading,.section-heading{display:flex;justify-content:space-between;align-items:center;gap:1rem}.page-heading{margin-bottom:1.7rem}.eyebrow{color:#9a98aa;font-size:.66rem;font-weight:800;letter-spacing:.15em}h2{margin:.35rem 0 .45rem;font-size:clamp(1.5rem,3vw,2rem);letter-spacing:-.04em}.page-heading p,.section-heading p{margin:0;color:var(--muted);font-size:.9rem}.primary-link{display:inline-flex;gap:.8rem;padding:.8rem 1.05rem;border-radius:12px;color:white;background:#6748ed;text-decoration:none;font-size:.82rem;font-weight:700}.metric-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-bottom:1.4rem}.metric-card,.table-card{border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 6px 24px #251d4708}.metric-card{padding:1.25rem 1.35rem}.metric-top{display:flex;justify-content:space-between;align-items:center;color:#77768a;font-size:.83rem;font-weight:650}.metric-icon{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;font-weight:800}.violet{color:#6748ed;background:#f0edff}.green{color:#16845b;background:#e7f7ef}.orange{color:#c17719;background:#fff3e2}.metric-value{display:block;margin:.75rem 0 .25rem;font-size:2rem;line-height:1;font-weight:800}.metric-card p{margin:.55rem 0 0;color:#9695a5;font-size:.76rem}.table-card{padding:1.25rem 1.4rem}.section-heading{margin-bottom:1rem}.section-heading h3{margin:0 0 .25rem;font-size:1rem}.section-heading p{font-size:.78rem}.subtle-link{color:#6748ed;text-decoration:none;font-size:.8rem;font-weight:700}.table-scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;text-align:left;font-size:.82rem}th{padding:.8rem .75rem;color:#9695a5;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase}td{padding:.9rem .75rem;border-top:1px solid #f0f0f5;color:#5f5e73}td strong,.table-location{display:block}.table-location{margin-top:.18rem;color:#9998a8;font-size:.74rem}.status-pill{display:inline-flex;padding:.33rem .58rem;border-radius:99px;font-size:.7rem;font-weight:750}.status-pill.active{color:#16845b;background:#e7f7ef}.status-pill.completed{color:#767589;background:#f0f0f4}.table-empty{display:grid;justify-items:center;gap:.45rem;padding:2.25rem 1rem;color:#9695a5}.table-empty strong{color:#393750}.empty-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;color:#6748ed;background:#f0edff;font-size:1.2rem}@media(max-width:750px){.metric-grid{grid-template-columns:1fr}.page-heading{align-items:flex-start;flex-direction:column}}
 </style>

@@ -1,146 +1,15 @@
-<<<<<<< HEAD
+<script setup>
+import { computed, ref } from 'vue'
+import { useEvents } from '@/composables/useEvents'
+const { activeEvents } = useEvents()
+const query = ref(''), selectedCategory = ref('All events')
+const categories = computed(() => ['All events', ...new Set(activeEvents.value.map(e => e.category).filter(Boolean))])
+const filteredEvents = computed(() => { const term=query.value.trim().toLowerCase(); return activeEvents.value.filter(e => (selectedCategory.value==='All events'||e.category===selectedCategory.value) && (!term||[e.title,e.location,e.category,e.desc].some(v=>String(v||'').toLowerCase().includes(term)))) })
+function formatDate(value){if(!value)return 'Date to be announced';const d=new Date(value);return Number.isNaN(d.getTime())?value:new Intl.DateTimeFormat('en',{dateStyle:'medium',timeStyle:'short'}).format(d)}
+</script>
 <template>
-  <div class="event-list-page">
-    <div class="header-section">
-      <h2 class="section-title">Upcoming Events</h2>
-      <p class="section-desc">Discover the latest gatherings and activities happening near you.</p>
-    </div>
-
-    <div class="event-grid">
-      <div class="event-card" v-for="i in 6" :key="i">
-        <div class="event-body">
-          <div class="event-meta">
-            <span class="event-date">Oct {{ 10 + i }}, 2026</span>
-            <span class="event-category">Community</span>
-          </div>
-          <h3>Community Gathering {{ i }}</h3>
-          <p class="event-loc">??? Main Auditorium, City Center</p>
-          <p class="event-desc">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at velit vel magna interdum scelerisque.
-          </p>
-
-          <div class="card-footer">
-            <router-link :to="`/browse/events/${i}`" class="btn-link">
-              View Details &rarr;
-            </router-link>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="event-list-page"><header class="catalog-heading"><div><span class="eyebrow">FIND YOUR NEXT MOMENT</span><h2>Upcoming Events</h2><p>Discover gatherings, ideas, and experiences happening around you.</p></div><RouterLink to="/dashboard/events" class="organizer-link">Host an event ?</RouterLink></header><section class="catalog-tools" aria-label="Search and filter events"><label class="search-field"><span>?</span><input v-model="query" type="search" placeholder="Search events, places, or topics" aria-label="Search events"></label><div class="category-filters"><button v-for="category in categories" :key="category" type="button" :class="{selected:selectedCategory===category}" @click="selectedCategory=category">{{ category }}</button></div></section><div v-if="filteredEvents.length" class="event-grid"><article v-for="event in filteredEvents" :key="event.id" class="event-card"><div class="card-art"><span class="art-shape one"></span><span class="art-shape two"></span><span class="art-mark">{{ event.category?.slice(0,1)||'G' }}</span><span class="art-category">{{ event.category }}</span></div><div class="event-body"><div class="event-meta"><span>{{ formatDate(event.date) }}</span><strong>{{ event.price||'Free' }}</strong></div><h3>{{ event.title }}</h3><p class="event-location">? {{ event.location }}</p><p class="event-description">{{ event.desc }}</p><div class="card-footer"><RouterLink :to="`/browse/events/${event.id}`" class="details-link">Explore event ?</RouterLink><span class="arrow-circle">?</span></div></div></article></div><section v-else class="empty-state"><div class="empty-illustration">?</div><span class="eyebrow">{{ activeEvents.length?'NO MATCHES FOUND':'A FRESH START' }}</span><h3>{{ activeEvents.length?'No events match your search':'Your next great event is waiting' }}</h3><p>{{ activeEvents.length?'Try another search term or choose a different category.':'There are no upcoming events just yet. Check back soon or start something new.' }}</p><button v-if="activeEvents.length" type="button" class="reset-button" @click="query='';selectedCategory='All events'">Clear filters</button><RouterLink v-else to="/dashboard/events" class="organizer-link">Create the first event ?</RouterLink></section></div>
 </template>
-
-=======
->>>>>>> fe8196a (first commit)
 <style scoped>
-.header-section {
-  margin-bottom: 3rem;
-}
-
-.section-title {
-  font-size: 2.2rem;
-  color: #1c1948;
-  margin-bottom: 0.5rem;
-}
-
-.section-desc {
-  color: #666;
-  font-size: 1.1rem;
-}
-
-.event-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
-}
-
-.event-card {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-  border: 1px solid #f0f0f0;
-<<<<<<< HEAD
-  transition: transform 0.3s ease, border-color 0.3s ease;
-=======
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
->>>>>>> fe8196a (first commit)
-  display: flex;
-  flex-direction: column;
-}
-
-.event-card:hover {
-  transform: translateY(-5px);
-  border-color: #ddd;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-}
-
-.event-body {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.event-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-.event-date {
-  background: rgba(102, 68, 255, 0.1);
-  color: #6644ff;
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.85rem;
-}
-
-.event-category {
-  color: #888;
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.event-body h3 {
-  color: #1c1948;
-  margin-bottom: 0.8rem;
-  font-size: 1.4rem;
-}
-
-.event-loc {
-  color: #666;
-  font-size: 0.95rem;
-  margin-bottom: 1.5rem;
-}
-
-.event-desc {
-  color: #555;
-  line-height: 1.6;
-  font-size: 0.95rem;
-  margin-bottom: 2rem;
-  flex-grow: 1;
-}
-
-.card-footer {
-  border-top: 1px solid #f0f0f0;
-  padding-top: 1.5rem;
-}
-
-.btn-link {
-  display: inline-block;
-  color: #1c1948;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.btn-link:hover {
-  color: #6644ff;
-}
+.event-list-page{--ink:#211d47;color:var(--ink)}.catalog-heading{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;margin-bottom:1.6rem}.eyebrow{color:#9997aa;font-size:.65rem;font-weight:800;letter-spacing:.16em}.catalog-heading h2{margin:.35rem 0 .4rem;font-size:clamp(1.75rem,4vw,2.5rem);letter-spacing:-.05em}.catalog-heading p{margin:0;color:#818094;font-size:.9rem}.organizer-link{display:inline-flex;gap:.7rem;padding:.75rem 1rem;border-radius:12px;color:white;background:#6748ed;text-decoration:none;font-size:.8rem;font-weight:750;white-space:nowrap}.catalog-tools{display:grid;gap:.8rem;margin-bottom:1.3rem;padding:1rem;border:1px solid #eeedf4;border-radius:16px;background:#fcfbff}.search-field{display:flex;align-items:center;gap:.65rem;max-width:500px;padding:.2rem .2rem .2rem .7rem;border:1px solid #e9e8f0;border-radius:10px;background:#fff;color:#858397}.search-field>span{font-size:1.4rem}.search-field input{width:100%;min-height:36px;border:0;outline:none;color:#393750;background:transparent;font-size:.8rem}.category-filters{display:flex;gap:.45rem;overflow-x:auto}.category-filters button{flex:0 0 auto;padding:.45rem .7rem;border:1px solid transparent;border-radius:99px;color:#77768a;background:transparent;font-size:.72rem;font-weight:700;cursor:pointer}.category-filters button.selected{border-color:#e2dcff;color:#6748ed;background:#f1eeff}.event-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,285px),1fr));gap:1rem}.event-card{overflow:hidden;border:1px solid #eeedf4;border-radius:18px;background:#fff;box-shadow:0 7px 24px #251d4708;transition:transform .2s,box-shadow .2s}.event-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px #251d4712}.card-art{position:relative;display:grid;place-items:center;height:140px;overflow:hidden;background:linear-gradient(135deg,#ddd5ff,#f7e7f5 55%,#ffe1c7)}.art-shape{position:absolute;border:1px solid #ffffff8c;border-radius:50%}.one{width:180px;height:180px;left:-35px;top:35px}.two{width:125px;height:125px;right:-12px;top:-38px}.art-mark{display:grid;place-items:center;width:58px;height:58px;border:1px solid #ffffffa8;border-radius:20px;color:white;background:#6748edaa;font-size:1.65rem;font-weight:800}.art-category{position:absolute;bottom:.7rem;left:.75rem;padding:.3rem .55rem;border-radius:99px;color:#4d3ba0;background:#ffffffc9;font-size:.65rem;font-weight:750}.event-body{padding:1rem 1.1rem}.event-meta,.card-footer{display:flex;justify-content:space-between;gap:.5rem}.event-meta{color:#9291a3;font-size:.68rem}.event-meta strong,.details-link{color:#6748ed;font-weight:750}.event-body h3{margin:.65rem 0 .4rem;font-size:1rem;line-height:1.35}.event-location,.event-description{color:#858397;font-size:.76rem}.event-location{margin:0}.event-description{display:-webkit-box;min-height:2.6em;overflow:hidden;-webkit-box-orient:vertical;-webkit-line-clamp:2;margin:.75rem 0 1rem;line-height:1.5}.card-footer{align-items:center;padding-top:.75rem;border-top:1px solid #f0eff5}.details-link{text-decoration:none;font-size:.76rem}.arrow-circle{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;color:#6748ed;background:#f0edff}.empty-state{display:grid;justify-items:center;padding:4rem 1rem;text-align:center}.empty-illustration{display:grid;place-items:center;width:80px;height:80px;margin-bottom:1.2rem;border-radius:27px;color:#6748ed;background:linear-gradient(145deg,#f0edff,#fdf0f8);font-size:2rem}.empty-state h3{margin:.6rem 0 .4rem;font-size:1.25rem}.empty-state p{max-width:410px;margin:0 0 1.1rem;color:#88879a;font-size:.85rem;line-height:1.6}.reset-button{padding:.65rem .9rem;border:1px solid #e8e4fb;border-radius:10px;color:#6748ed;background:white;font-weight:700;cursor:pointer}@media(max-width:650px){.catalog-heading{align-items:flex-start;flex-direction:column}.catalog-tools{padding:.75rem}}
 </style>

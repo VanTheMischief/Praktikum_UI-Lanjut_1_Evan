@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
-</script>
-
-<template>
-  <main>
-    <TheWelcome />
-  </main>
-</template>
-=======
 <template>
   <div class="home-page">
     <section class="hero">
@@ -335,4 +324,3 @@ import TheWelcome from '../components/TheWelcome.vue'
   }
 }
 </style>
->>>>>>> fe8196a (first commit)

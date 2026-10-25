@@ -1,54 +1,4 @@
 <template>
-<<<<<<< HEAD
-    <div class="contact-page">
-        <div class="contact-header">
-            <h1>Contact us</h1>
-            <p>We'd love to hear from you. Please fill out the form below or reach out via our contact info</p>
-        </div>
-    <div class="contact-content">
-        <div class="contact-info">
-            <div class="info-item">
-                <div class="info-icon">??</div>
-                <div>
-                    <h3>Our Office</h3>
-                    <p>123 Event street, Tech city, 10101</p>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-icon">??</div>
-                <div>
-                    <h3>Phone</h3>
-                    <p>+1 2392 3920</p>
-                </div>
-            </div>
-            <div class="info-item">
-                <div class="info-icon">??</div>
-                <div>
-                    <h3>Email</h3>
-                    <p>hello@gmail.com</p>
-                </div>
-            </div>
-        </div>
-        <div class="contact-form">
-            <form @submit.prevent>
-                <div class="for-group">
-                    <label>Name</label>
-                    <input type="text" placeholder="John Doe" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" placeholder="john@example.com" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea placeholder="How can we help you?" rows="5" class="form-control"></textarea>
-                </div>
-                <button class="btn-submit">Send message</button>
-            </form>
-        </div>
-    </div>
-    </div>
-=======
   <div class="contact-page">
     <div class="contact-header">
       <h1>Contact Us</h1>
@@ -119,7 +69,6 @@
       </div>
     </div>
   </div>
->>>>>>> fe8196a (first commit)
 </template>
 
 <style scoped>
