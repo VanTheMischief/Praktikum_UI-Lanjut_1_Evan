@@ -1,0 +1,5 @@
+<script setup>
+const props=defineProps({registration:{type:Object,required:true},event:{type:Object,default:null}})
+</script>
+<template><div class="receipt"><span class="check">✓</span><p>Your place is confirmed. Keep this reference for your records.</p><strong class="reference">{{registration.reference}}</strong><div class="details"><span>Attendee</span><b>{{registration.attendee.name}}</b><span>Email</span><b>{{registration.attendee.email}}</b><template v-if="event"><span>Event</span><b>{{event.title}}</b></template></div></div></template>
+<style scoped>.receipt p{color:#737286;font-size:.82rem;line-height:1.55}.check{display:grid;place-items:center;width:46px;height:46px;margin:auto;border-radius:50%;color:#16845b;background:#e7f7ef;font-size:1.35rem;font-weight:800}.reference{display:block;margin:1rem 0;padding:.75rem;border:1px dashed #c7baff;border-radius:10px;color:#6748ed;background:#f8f6ff;letter-spacing:.08em}.details{display:grid;grid-template-columns:1fr 1.5fr;gap:.55rem;text-align:left;font-size:.74rem}.details span{color:#9291a3}.details b{color:#46445c;overflow-wrap:anywhere}</style>

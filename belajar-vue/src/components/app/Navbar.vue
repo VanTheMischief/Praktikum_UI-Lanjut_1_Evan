@@ -28,6 +28,7 @@ const menus = [
       }
     ]
   },
+  { name: 'Your Events', path: '/your-events' },
   {
     name: 'Contact',
     path: '/contact'
