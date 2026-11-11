@@ -115,6 +115,8 @@ const handleViewDetail = (id: number | string) => {
   </div>
 </template>
 
+=======
+>>>>>>> fe8196a (first commit)
 <style scoped>
 .header-section {
   margin-bottom: var(--space-8);
@@ -136,7 +138,7 @@ const handleViewDetail = (id: number | string) => {
 .event-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: var(--space-6);
+  gap: 2rem;
 }
 
 .empty-state {

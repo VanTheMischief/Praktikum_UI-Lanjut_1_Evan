@@ -17,10 +17,8 @@ import AppCard from '@/components/ui/AppCard.vue'
       </div>
     </div>
 
-    <!-- ASYMMETRICAL LAYOUT -->
-    <div class="detail-content grid-asymmetric">
-      <!-- F-PATTERN: Breaking text with Headings & Bullet Points -->
-      <div class="main-desc">
+    <div class="detail-content">
+      <div class="main-section">
         <h2>About This Event</h2>
         <p>
           Welcome to the biggest web interface development training event of the year! Gatherly is
@@ -34,17 +32,16 @@ import AppCard from '@/components/ui/AppCard.vue'
           directly applied to your future projects or career.
         </p>
 
-        <h2>Event Agenda</h2>
+        <h2>Agenda</h2>
+
         <ul class="agenda-list">
-          <li><strong>09:00 AM</strong> - Registration & QR Check-in Scanning</li>
-          <li><strong>10:00 AM</strong> - Session 1: Vue Router & Navigation Fundamentals</li>
-          <li><strong>11:30 AM</strong> - Coffee Break & Networking Session</li>
-          <li><strong>01:00 PM</strong> - Session 2: Layout System & Grid Implementation</li>
-          <li><strong>03:00 PM</strong> - Q&A & Closing Remarks</li>
+          <li><strong>09:00 AM</strong> - Registration & Welcome Coffee</li>
+          <li><strong>10:00 AM</strong> - Keynote Speech</li>
+          <li><strong>11:30 AM</strong> - Networking Session</li>
+          <li><strong>01:00 PM</strong> - Closing Remarks</li>
         </ul>
       </div>
 
-      <!-- FOCAL POINT & STICKY PANE -->
       <div class="sidebar">
         <AppCard class="ticket-card sticky-pane">
           <h3>Attendee Registration</h3>
@@ -105,8 +102,24 @@ import AppCard from '@/components/ui/AppCard.vue'
 /* ASYMMETRICAL GRID */
 .grid-asymmetric {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: var(--space-12);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border-color: #e0e0e0;
 }
 
 .main-desc h2 {
@@ -133,14 +146,13 @@ import AppCard from '@/components/ui/AppCard.vue'
   font-size: 1.05rem;
 }
 
-/* FOCAL POINT CARD */
+.sidebar {
+  flex: 1;
+}
+
 .ticket-card {
   padding: var(--space-8);
   text-align: center;
-}
-
-/* STICKY BEHAVIOR */
-.sticky-pane {
   position: sticky;
   top: 100px;
 }
