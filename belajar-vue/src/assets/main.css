@@ -5,8 +5,8 @@
 }
 
 :root {
-  /* SPATIAL SYSTEM (BASE-8) */
-  /* Digunakan untuk konsistensi jarak, margin, dan padding */
+  /* SPATIAL SYSTEM (BASE-8)
+     Digunakan untuk konsistensi jarak, margin, dan padding */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
@@ -34,8 +34,8 @@ body {
   overflow-x: hidden;
 }
 
-/* GLOBAL GRID SYSTEM */
-/* Menerapkan 12-kolom grid untuk tata letak yang konsisten */
+/* GLOBAL GRID SYSTEM
+   Menerapkan 12-kolom grid untuk tata letak yang konsisten */
 .grid-12 {
   display: grid;
   grid-template-columns: repeat(12, 1fr);

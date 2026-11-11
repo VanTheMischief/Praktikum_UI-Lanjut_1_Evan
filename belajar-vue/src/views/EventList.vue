@@ -4,7 +4,7 @@ const events = [
     id: 1,
     title: 'Vue.js Mastery Workshop',
     date: 'Oct 12, 2026',
-    loc: '📍 Tech Hub, Jakarta',
+    loc: 'Tech Hub, Jakarta',
     cat: 'Workshop',
     desc: 'Learn advanced Vue 3 concepts, Composition API, and state management to build high-performance web applications interactively.',
   },
@@ -12,7 +12,7 @@ const events = [
     id: 2,
     title: 'National Tech Meetup',
     date: 'Oct 15, 2026',
-    loc: '📍 Main Auditorium, City Center',
+    loc: 'Main Auditorium, City Center',
     cat: 'Meetup',
     desc: 'A gathering of hundreds of developers and tech enthusiasts to share the latest industry trends and expand professional networks.',
   },
@@ -20,7 +20,7 @@ const events = [
     id: 3,
     title: 'Startup Pitch Competition',
     date: 'Nov 02, 2026',
-    loc: '📍 Innovation Center',
+    loc: 'Innovation Center',
     cat: 'Competition',
     desc: 'Watch the best local startup founders pitch their innovative ideas live in front of a panel of renowned investors.',
   },
@@ -28,7 +28,7 @@ const events = [
     id: 4,
     title: 'UI/UX Design Sprint',
     date: 'Nov 10, 2026',
-    loc: '📍 Creative Studio',
+    loc: 'Creative Studio',
     cat: 'Workshop',
     desc: 'A hands-on session on designing user interfaces by implementing layout systems and visual hierarchy principles.',
   },
@@ -36,7 +36,7 @@ const events = [
     id: 5,
     title: 'Digital Marketing Seminar',
     date: 'Nov 20, 2026',
-    loc: '📍 Grand Hotel Hall',
+    loc: 'Grand Hotel Hall',
     cat: 'Seminar',
     desc: 'An in-depth seminar dissecting modern digital marketing strategies, from SEO optimization to user conversion tactics.',
   },
@@ -44,7 +44,7 @@ const events = [
     id: 6,
     title: 'Community Leaders Summit',
     date: 'Dec 05, 2026',
-    loc: '📍 Gatherly HQ',
+    loc: 'Gatherly HQ',
     cat: 'Conference',
     desc: 'An exclusive year-end conference for community leaders to formulate sustainable ecosystem development strategies.',
   },
@@ -55,9 +55,15 @@ const events = [
   <div class="event-list-page">
     <div class="header-section">
       <h2 class="section-title">Upcoming Events</h2>
+      <<<<<<< HEAD
       <p class="section-desc">
         Discover workshops, seminars, tech meetups, and competitions near you.
       </p>
+      =======
+      <p class="section-desc">
+        Discover workshops, seminars, tech meetups, and competitions near you.
+      </p>
+      >>>>>>> 15086c95ef54fd967c1c612222d8b57afaf31dfa
     </div>
 
     <!-- LAYOUT SYSTEM: ADAPTIVE GRID -->
@@ -70,6 +76,7 @@ const events = [
             <span class="event-date">{{ event.date }}</span>
             <span class="event-category">{{ event.cat }}</span>
           </div>
+          <<<<<<< HEAD
 
           <h3 class="event-title">{{ event.title }}</h3>
           <p class="event-loc">{{ event.loc }}</p>
@@ -82,6 +89,20 @@ const events = [
               >View Event Details &rarr;</router-link
             >
           </div>
+          =======
+
+          <h3 class="event-title">{{ event.title }}</h3>
+          <p class="event-loc">{{ event.loc }}</p>
+          <p class="event-desc">
+            {{ event.desc }}
+          </p>
+        </div>
+
+        <div class="card-footer">
+          <router-link :to="`/browse/events/${event.id}`" class="btn-link"
+            >View Event Details &rarr;</router-link
+          >
+          >>>>>>> 15086c95ef54fd967c1c612222d8b57afaf31dfa
         </div>
       </div>
     </div>
@@ -95,6 +116,7 @@ const events = [
 .section-title {
   font-size: 2.2rem;
   margin-bottom: var(--space-2);
+  color: var(--text-main);
 }
 .section-desc {
   color: var(--text-muted);
@@ -159,6 +181,7 @@ const events = [
 .event-title {
   margin-bottom: var(--space-2);
   font-size: 1.4rem;
+  color: var(--text-main);
 }
 .event-loc {
   color: var(--text-muted);
@@ -175,7 +198,7 @@ const events = [
 
 .card-footer {
   border-top: 1px solid var(--border-color);
-  padding-top: var(--space-4);
+  padding: var(--space-4);
 }
 
 .btn-link {
@@ -183,9 +206,7 @@ const events = [
   font-weight: 600;
   text-decoration: none;
 }
-
 .btn-link:hover {
   color: var(--primary);
 }
 </style>
-```[cite: 31, 32, 33]

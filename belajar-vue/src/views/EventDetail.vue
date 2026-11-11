@@ -6,7 +6,7 @@
       <span class="event-tag">Workshop & Training</span>
       <h1>Vue.js Mastery Workshop {{ $route.params.id }}</h1>
       <div class="meta-info">
-        <span class="meta-item">📅 October 12, 2026</span>
+        <span class="meta-item">🗓️ October 12, 2026</span>
         <span class="meta-item">📍 Tech Hub, Jakarta Pusat</span>
         <span class="meta-item">👥 Quota: 150 Attendees</span>
       </div>
@@ -61,7 +61,7 @@
   font-size: 1rem;
   cursor: pointer;
   margin-bottom: var(--space-6);
-  color: var(--text-light);
+  color: var(--text-muted);
 }
 .detail-header {
   background: var(--bg-light);
@@ -84,10 +84,12 @@
   font-size: 2.8rem;
   margin-bottom: var(--space-4);
   line-height: 1.2;
+  color: var(--text-main);
 }
 .meta-info {
   display: flex;
   gap: var(--space-6);
+  flex-wrap: wrap;
 }
 .meta-item {
   color: var(--text-muted);
@@ -105,6 +107,7 @@
 .main-desc h2 {
   margin-bottom: var(--space-4);
   font-size: 1.8rem;
+  color: var(--text-main);
   border-left: 4px solid var(--primary);
   padding-left: var(--space-2);
 }
@@ -145,6 +148,7 @@
 .ticket-card h3 {
   font-size: 1.5rem;
   margin-bottom: var(--space-2);
+  color: var(--text-main);
 }
 .price {
   font-size: 2.8rem;
@@ -167,6 +171,7 @@
   font-size: 1.1rem;
   font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .btn-register:hover {
