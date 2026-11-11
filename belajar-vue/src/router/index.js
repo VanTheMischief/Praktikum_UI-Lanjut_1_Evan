@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
 import AppLayout from '@/layouts/App.vue'
 
 const routes = [
@@ -10,13 +10,13 @@ const routes = [
         path: '',
         name: 'home',
         component: () => import('@/views/Home.vue'),
-        meta: { breadcrumb: 'Home' }
+        meta: {breadcrumb: 'Home'}
       },
       {
         path: 'about',
         name: 'about',
         component: () => import('@/views/About.vue'),
-        meta: { breadcrumb: 'About' }
+        meta: {breadcrumb: 'About'}
       },
       {
         path: 'browse',
@@ -29,19 +29,19 @@ const routes = [
             path: 'events',
             name: 'events',
             component: () => import('@/views/EventList.vue'),
-            meta: { breadcrumb: 'Event List' }
+            meta: {breadcrumb: 'Event List'}
           },
           {
             path: 'events/:id',
             name: 'event-detail',
             component: () => import('@/views/EventDetail.vue'),
-            meta: { breadcrumb: 'Event Detail' }
+            meta: {breadcrumb: 'Event Detail'}
           },
           {
             path: 'category',
             name: 'category',
             component: () => import('@/views/Category.vue'),
-            meta: { breadcrumb: 'Category' }
+            meta: {breadcrumb: 'Category'}
           }
         ]
       },
@@ -49,7 +49,7 @@ const routes = [
         path: 'contact',
         name: 'contact',
         component: () => import('@/views/Contact.vue'),
-        meta: { breadcrumb: 'Contact' }
+        meta: {breadcrumb: 'Contact'}
       }
     ]
   }
