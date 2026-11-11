@@ -1,21 +1,33 @@
 <template>
-    <div class="about-page">
-        <div class="about-header">
-            <h1>About Gatherly</h1>
-            <p>Building the future of event experiences, one commmunity at a time.</p>
-        </div>
-        <div class="about-content">
-            <div class="text-block">
-                <h2>Our mission</h2>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid rerum ipsa, laboriosam, voluptatibus consectetur non, in recusandae id tempore porro maxime? Beatae dignissimos harum nesciunt, corrupti labore optio eaque itaque aliquam cupiditate fugiat totam quos repudiandae officiis illum commodi iusto amet ratione? Molestiae dolorum minima rerum maiores, error modi vitae.</p>
-            </div>
-
-            <div class="text-block">
-                <h2>Our vision</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa ea quis explicabo, esse quisquam cupiditate consequatur inventore rem consectetur obcaecati, vel tempora sequi earum voluptatibus, modi illo natus eligendi consequuntur quo! Iusto quasi earum saepe adipisci inventore sed nam nobis eaque tempora, nulla esse facilis repudiandae error magni reiciendis! Doloribus?</p>
-            </div>
-        </div>
+  <div class="about-page">
+    <div class="about-header">
+      <h1>About Gatherly</h1>
+      <p>Building the future of event experiences, one commmunity at a time.</p>
     </div>
+    <div class="about-content">
+      <div class="text-block">
+        <h2>Our mission</h2>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquid rerum ipsa, laboriosam,
+          voluptatibus consectetur non, in recusandae id tempore porro maxime? Beatae dignissimos
+          harum nesciunt, corrupti labore optio eaque itaque aliquam cupiditate fugiat totam quos
+          repudiandae officiis illum commodi iusto amet ratione? Molestiae dolorum minima rerum
+          maiores, error modi vitae.
+        </p>
+      </div>
+
+      <div class="text-block">
+        <h2>Our vision</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa ea quis explicabo, esse
+          quisquam cupiditate consequatur inventore rem consectetur obcaecati, vel tempora sequi
+          earum voluptatibus, modi illo natus eligendi consequuntur quo! Iusto quasi earum saepe
+          adipisci inventore sed nam nobis eaque tempora, nulla esse facilis repudiandae error magni
+          reiciendis! Doloribus?
+        </p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style scoped>
@@ -62,7 +74,7 @@
 }
 
 .text-block h2::before {
-  content: "";
+  content: '';
   display: block;
   width: 24px;
   height: 4px;

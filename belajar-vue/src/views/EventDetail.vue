@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import AppButton from '@/components/ui/AppButton.vue'
+import AppCard from '@/components/ui/AppCard.vue'
+</script>
+
 <template>
   <div class="event-detail-page">
     <button @click="$router.push('/browse/events')" class="btn-back">&larr; Back to Events</button>
@@ -6,9 +11,9 @@
       <span class="event-tag">Workshop & Training</span>
       <h1>Vue.js Mastery Workshop {{ $route.params.id }}</h1>
       <div class="meta-info">
-        <span class="meta-item">🗓️ October 12, 2026</span>
+        <span class="meta-item">📅 October 12, 2026</span>
         <span class="meta-item">📍 Tech Hub, Jakarta Pusat</span>
-        <span class="meta-item">👥 Quota: 150 Attendees</span>
+        <span class="meta-item">🎟️ Quota: 150 Attendees</span>
       </div>
     </div>
 
@@ -41,14 +46,16 @@
 
       <!-- FOCAL POINT & STICKY PANE -->
       <div class="sidebar">
-        <div class="ticket-card sticky-pane">
+        <AppCard class="ticket-card sticky-pane">
           <h3>Attendee Registration</h3>
           <p class="price">Free</p>
           <p class="ticket-desc">Secure your seat now before the quota is full.</p>
+
           <!-- STRONGEST FOCAL POINT -->
-          <button class="btn-register">Register Now</button>
+          <AppButton variant="primary" class="btn-register"> Register Now </AppButton>
+
           <p class="spots">Only 12 seats left!</p>
-        </div>
+        </AppCard>
       </div>
     </div>
   </div>
@@ -84,12 +91,10 @@
   font-size: 2.8rem;
   margin-bottom: var(--space-4);
   line-height: 1.2;
-  color: var(--text-main);
 }
 .meta-info {
   display: flex;
   gap: var(--space-6);
-  flex-wrap: wrap;
 }
 .meta-item {
   color: var(--text-muted);
@@ -107,7 +112,6 @@
 .main-desc h2 {
   margin-bottom: var(--space-4);
   font-size: 1.8rem;
-  color: var(--text-main);
   border-left: 4px solid var(--primary);
   padding-left: var(--space-2);
 }
@@ -131,11 +135,7 @@
 
 /* FOCAL POINT CARD */
 .ticket-card {
-  background: white;
   padding: var(--space-8);
-  border-radius: var(--space-4);
-  border: 1px solid var(--border-color);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
   text-align: center;
 }
 
@@ -148,7 +148,6 @@
 .ticket-card h3 {
   font-size: 1.5rem;
   margin-bottom: var(--space-2);
-  color: var(--text-main);
 }
 .price {
   font-size: 2.8rem;
@@ -163,19 +162,6 @@
 
 .btn-register {
   width: 100%;
-  padding: var(--space-4);
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.btn-register:hover {
-  background: var(--primary-hover);
 }
 .spots {
   margin-top: var(--space-4);
@@ -190,4 +176,4 @@
   }
 }
 </style>
-```[cite: 34, 35]
+```[cite: 11, 12, 13, 14]
