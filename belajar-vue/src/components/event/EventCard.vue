@@ -2,7 +2,10 @@
   <AppCard class="event-card-wrapper">
     <div class="event-body">
       <div class="event-meta">
-        <span class="event-date">{{ event.date }}</span>
+        <div class="meta-left">
+          <span class="event-date">{{ event.date }}</span>
+          <span v-if="isRegistered" class="badge-registered">Registered</span>
+        </div>
         <span class="event-category">{{ event.cat }}</span>
       </div>
 
@@ -22,22 +25,25 @@
 <script setup lang="ts">
 import AppCard from '@/components/ui/AppCard.vue'
 
-interface EventItem {
-  id: string | number
-  date: string
-  cat: string
-  title: string
-  loc: string
-  desc: string
-}
+withDefaults(
+  defineProps<{
+    event: {
+      id: number | string
+      title: string
+      date: string
+      loc: string
+      cat: string
+      desc: string
+      [key: string]: any
+    }
+    isRegistered?: boolean
+  }>(),
+  {
+    isRegistered: false,
+  },
+)
 
-defineProps<{
-  event: EventItem
-}>()
-
-defineEmits<{
-  (e: 'view-detail', id: string | number): void
-}>()
+defineEmits(['view-detail'])
 </script>
 
 <style scoped>
@@ -57,6 +63,13 @@ defineEmits<{
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--space-4);
+  gap: var(--space-2);
+}
+.meta-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
 }
 .event-date {
   background: rgba(102, 68, 255, 0.1);
@@ -65,6 +78,16 @@ defineEmits<{
   border-radius: 6px;
   font-weight: 600;
   font-size: 0.85rem;
+}
+.badge-registered {
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 .event-category {
   color: var(--text-muted);
@@ -75,6 +98,7 @@ defineEmits<{
 .event-title {
   margin-bottom: var(--space-2);
   font-size: 1.4rem;
+  color: var(--text-main);
 }
 .event-loc {
   color: var(--text-muted);

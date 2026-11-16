@@ -1,54 +1,27 @@
-<<<<<<< HEAD
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
-</script>
-
-<template>
-  <main>
-    <TheWelcome />
-  </main>
-</template>
-=======
 <template>
   <div class="home-page">
     <section class="hero">
       <div class="hero-content">
         <span class="badge">Welcome to Gatherly</span>
 
-        <h1 class="hero-title">
-          Connect, Discover, and Experience
-        </h1>
+        <h1 class="hero-title">Connect, Discover, and Experience</h1>
 
         <p class="hero-subtitle">
-          Join our vibrant community to explore the best events tailored for you.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua.
+          Join our vibrant community to explore the best events tailored for you. Lorem ipsum dolor
+          sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+          dolore magna aliqua.
         </p>
 
         <div class="hero-actions">
-          <router-link
-            to="/browse/events"
-            class="btn btn-primary"
-          >
-            Discover Events
-          </router-link>
+          <router-link to="/browse/events" class="btn btn-primary"> Discover Events </router-link>
 
-          <router-link
-            to="/about"
-            class="btn btn-secondary"
-          >
-            Learn More
-          </router-link>
+          <router-link to="/about" class="btn btn-secondary"> Learn More </router-link>
         </div>
       </div>
     </section>
 
     <section class="features">
-      <div
-        class="feature-card"
-        v-for="i in 3"
-        :key="i"
-      >
+      <div class="feature-card" v-for="i in 3" :key="i">
         <div class="feature-icon">
           {{ ['?', '?', '?'][i - 1] }}
         </div>
@@ -58,8 +31,8 @@ import TheWelcome from '../components/TheWelcome.vue'
         </h3>
 
         <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat.
         </p>
       </div>
     </section>
@@ -77,43 +50,31 @@ import TheWelcome from '../components/TheWelcome.vue'
 
           <ul>
             <li>
-              <router-link to="/about">
-                About
-              </router-link>
+              <router-link to="/about"> About </router-link>
             </li>
 
             <li>
-              <router-link to="/browse">
-                Browse
-              </router-link>
+              <router-link to="/browse"> Browse </router-link>
 
               <ul>
                 <li>
-                  <router-link to="/browse/events">
-                    Event List
-                  </router-link>
+                  <router-link to="/browse/events"> Event List </router-link>
 
                   <ul>
                     <li>
-                      <router-link to="/browse/events/1">
-                        Event Detail (Example)
-                      </router-link>
+                      <router-link to="/browse/events/1"> Event Detail (Example) </router-link>
                     </li>
                   </ul>
                 </li>
 
                 <li>
-                  <router-link to="/browse/category">
-                    Category
-                  </router-link>
+                  <router-link to="/browse/category"> Category </router-link>
                 </li>
               </ul>
             </li>
 
             <li>
-              <router-link to="/contact">
-                Contact
-              </router-link>
+              <router-link to="/contact"> Contact </router-link>
             </li>
           </ul>
         </li>
@@ -279,7 +240,7 @@ import TheWelcome from '../components/TheWelcome.vue'
 }
 
 .tree li::before {
-  content: "";
+  content: '';
   position: absolute;
   top: -12px;
   left: -15px;
@@ -335,4 +296,3 @@ import TheWelcome from '../components/TheWelcome.vue'
   }
 }
 </style>
->>>>>>> fe8196a (first commit)
